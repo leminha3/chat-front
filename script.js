@@ -24,7 +24,7 @@ async function sendMessage() {
   const validHistory = chatHistory.filter(msg => msg.role === "user" || msg.role === "model");
 
   try {
-    const response = await fetch("http://chat-back-production-48c0.up.railway.app/chat", {
+    const response = await fetch("https://chat-back-production-48c0.up.railway.app/chat", {
     method: "POST",
     headers: {
      "Content-Type": "application/json"
