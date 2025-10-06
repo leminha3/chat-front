@@ -24,7 +24,7 @@
     chatHistory.push({ role:"user", parts:[{text}] });
 
     try {
-      const response = await fetch("http://localhost:3001/chat", {
+      const response = await fetch("https://chat-back-production-48c0.up.railway.app/chat", {
         method:"POST",
         headers: {"Content-Type":"application/json"},
         body: JSON.stringify({ message: text })
