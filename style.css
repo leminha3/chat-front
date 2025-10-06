@@ -1,83 +1,232 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  margin: 0;
-  padding: 0;
+/* ------------------------------------------------ */
+/* Cài đặt cơ bản và Font */
+/* ------------------------------------------------ */
+:root {
+    --color-main-bg: #f5e5d3; /* MÀU BE/NUDE NHẠT */
+    --color-container-bg: #e6f0e0; /* Pale Mint - Nền hộp chat */
+    --color-header-input: #7a9c78; /* Muted Forest Green - Header/Input Bar */
+    --color-border: #3f573d; /* Dark Green - Viền/Text chính */
 }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-main-bg);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.header-font {
+    font-family: 'Crete Round', serif;
+}
+
+/* ------------------------------------------------ */
+/* Container Chính */
+/* ------------------------------------------------ */
 
 .chat-container {
-  width: 100%;
-  max-width: 700px;
-  margin: 30px auto;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 90%; 
+    max-width: 800px; 
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-container-bg);
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    overflow: hidden;
+    border: 3px solid var(--color-header-input); 
 }
+
+/* ------------------------------------------------ */
+/* Header (ĐÃ CẬP NHẬT) */
+/* ------------------------------------------------ */
 
 .chat-header {
-  background: #343541;
-  color: white;
-  padding: 15px;
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-header-input);
+    color: white;
 }
 
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
+.chat-header .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    border: 2px solid white;
+    object-fit: cover;
 }
+
+.chat-header .header-text h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    /* Có thể thêm margin-bottom nếu muốn có khoảng cách với nội dung khác */
+}
+
+/* Đã xóa .chat-header .header-text span */
+
+/* ------------------------------------------------ */
+/* Chat Box */
+/* ------------------------------------------------ */
 
 .chat-box {
-  max-height: 500px;
-  overflow-y: auto;
-  padding: 20px;
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
+
+/* ------------------------------------------------ */
+/* Message Bubbles */
+/* ------------------------------------------------ */
 
 .message {
-  margin: 10px 0;
+    display: flex;
 }
 
-.user {
-  text-align: right;
+.message .bubble {
+    padding: 1rem 1.25rem;
+    border-radius: 1.5rem;
+    max-width: 75%;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--color-border); 
+    font-weight: 500; 
+    color: var(--color-border); 
+    background-color: white; 
+    font-size: 1.1rem;
 }
 
-.user .bubble {
-  background: #DCF8C6;
-  color: #000;
-  display: inline-block;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
+/* Tin nhắn của BOT (Left) */
+.bot {
+    justify-content: flex-start;
 }
-
 .bot .bubble {
-  background: #E3E3E3;
-  color: #000;
-  display: inline-block;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 70%;
+    border-radius: 1.5rem 1.5rem 1.5rem 0.5rem; 
+}
+.bot .bubble::after {
+    content: "";
+    position: absolute;
+    left: -15px;
+    bottom: 15px; 
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-right-color: white;
+    border-left: 0;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 10;
 }
 
-.chat-input {
-  display: flex;
-  border-top: 1px solid #ddd;
+/* Tin nhắn của USER (Right) */
+.user {
+    justify-content: flex-end;
+}
+.user .bubble {
+    border-radius: 1.5rem 1.5rem 0.5rem 1.5rem; 
+}
+.user .bubble::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    bottom: 15px; 
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-left-color: white;
+    border-right: 0;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    z-index: 10;
 }
 
-.chat-input input {
-  flex: 1;
-  padding: 15px;
-  border: none;
-  font-size: 16px;
+/* Viền Đuôi Bong Bóng */
+.bot .bubble::before {
+    content: "";
+    position: absolute;
+    left: -17px; 
+    bottom: 14px;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-right-color: var(--color-border);
+    border-left: 0;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    z-index: 5; 
 }
 
-.chat-input button {
-  padding: 15px;
-  background: #343541;
-  color: white;
-  border: none;
-  cursor: pointer;
+.user .bubble::before {
+    content: "";
+    position: absolute;
+    right: -17px;
+    bottom: 14px;
+    width: 0;
+    height: 0;
+    border: 9px solid transparent;
+    border-left-color: var(--color-border);
+    border-right: 0;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    z-index: 5;
+}
+
+
+/* ------------------------------------------------ */
+/* Input Bar */
+/* ------------------------------------------------ */
+
+.chat-input-bar {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-header-input);
+}
+
+.chat-input-bar input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 0.5rem; 
+    font-size: 1rem;
+    outline: none;
+    background-color: #5c775a; 
+    color: white;
+    font-weight: bold;
+}
+
+.chat-input-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+.chat-input-bar button {
+    margin-left: 0.75rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-input-bar button .fas {
+    color: white;
+    font-size: 1.25rem;
+    transition: transform 0.2s;
+}
+
+.chat-input-bar button:hover .fas {
+    transform: scale(1.1);
 }

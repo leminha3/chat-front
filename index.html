@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <title>Chat với Nguyễn Du</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat với Nguyễn Du</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <img src="nguyendu.jpg" alt="Nguyễn Du" class="avatar" />
-      <h2>Nguyễn Du slay</h2>
-    </div>
-    <div id="chat-box" class="chat-box"></div>
-    <div class="chat-input">
-      <input type="text" id="user-input" placeholder="Nhập câu hỏi của bạn..." />
-      <button onclick="sendMessage()">Gửi</button>
-    </div>
-  </div>
 
-  <script src="script.js"></script>
+    <div class="chat-container">
+        
+        <div class="chat-header">
+            <img 
+                src="nguyendu.jpg" 
+                alt="Nguyễn Du" 
+                class="avatar"
+            >
+            <div class="header-text">
+                <h2 class="header-font">NGUYỄN DU</h2>
+                </div>
+        </div>
+
+        <div id="chat-box" class="chat-box">
+        </div>
+
+        <div class="chat-input-bar">
+            <input 
+                type="text" 
+                id="user-input" 
+                placeholder="TYPE HERE" 
+                onkeypress="if(event.key==='Enter'){sendMessage();}"
+            >
+            <button onclick="sendMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
